@@ -18,7 +18,7 @@ export const Main = ()=>{
 
     </div>
     <div className="book">
-        <button>Book Now &rarr;</button>
+        <button>Book Now &weierp;</button>
     </div>
 
 </div>
@@ -26,6 +26,9 @@ export const Main = ()=>{
 <div className="page-content">
     
 </div>
+
+
+
 </>
     
     

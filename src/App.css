@@ -1,6 +1,8 @@
 .gallery{
+  padding-top: 250px;
   text-align: center;
   background-color: pink;
+  z-index: 20;
 }
 
 .image-grid {
@@ -27,6 +29,7 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* Formal font, can change to other fonts like 'Times New Roman', etc. */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
+  z-index: 20;
 }
 
 .menu_button:hover {
@@ -37,14 +40,14 @@
 .menu{
   background-color: pink;
   text-align: center;
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding-top: 250px;
+  padding-bottom: 0px;
+  z-index: 20;
 }
 
 .contact{
- color:green;
-
-
+  padding-top: 250px;
+  color:green;
 }
 
 
@@ -96,9 +99,21 @@
 
 .headeres a {
   margin: 10px; /* Spacing around buttons */
-  padding: 10px; /* Padding inside buttons */
+  padding: 30px; /* Padding inside buttons */
 
 }
+
+.bottom{
+  position:flex;
+  height:100%;
+  font-size:16px;
+  padding: 15px 32px;
+  border: None;
+  display:center;
+  background-color: rgb(254,252,237);
+  z-index: 10;
+}
+
 .submenu {
   display: none; /* Initially hidden */
   position: absolute; /* Adjust as per your layout */
@@ -112,14 +127,24 @@
 
 
 .book button{
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: Snell Roundhand, cursive;
   font-style: italic;
   color: darkgreen;
+  background-color: rgb(237, 255, 251);
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding around text */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px #0098b3; /* Shadow effect to create 3D look */
+  transition: all 0.3s ease; /* Smooth transition for click effect */
+}
+.book button:active{
+  box-shadow: 0 2px #009bb3; /* Smaller shadow for clicked effect */
+  transform: translateY(2px); /* Slight move down to mimic click */
 }
 
 .nav-link {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: URW Chancery L, cursive; /* Change to your desired font */
   text-decoration: none; /* Removes underline */
   color: black; /* Sets the text color; change as needed */
@@ -132,8 +157,10 @@
 
 
 .contact_page{
-padding-top: 400px;
-text-align: center;
+  padding-bottom: 0px;
+  z-index: 20;
+  text-align: center;
 }
+
 
 

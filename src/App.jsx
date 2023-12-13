@@ -12,23 +12,13 @@ function App() {
 
   <Router>
   <h1><Main/></h1>
-
-
-
- 
 <Routes>
-<Route path="/" element={<Main/>}/>
+<Route path="/home" element={<Main/>}/>
  <Route path="/menu" element={<Menu/>} />
  <Route path="/gallary" element={<Gallary/>} />
  <Route path="/contact" element={<Contact/>} />
 
 </Routes>
-
-
-
-
-
-
 </Router>
 
 </>

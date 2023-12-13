@@ -24,7 +24,12 @@ export const Gallary = () => {
   <img src = 'https://media.istockphoto.com/id/648878964/photo/woman-eye-with-long-eyelashes-eyelash-extension-lashes-close-up-selective-focus.jpg?s=612x612&w=0&k=20&c=6rfCb6VvKLUhchmCrSEDQeQzfaAISOSqz10Sv3JlF6I='></img>
   </div>
   
-  
+  <div className="bottom">
+        <p>11135 1st Ave,<br/>
+        Whittier, CA 90603<br/> 
+        562-315-5517<br/> 
+        ohwaxingstudio@gmail.com</p>
+    </div>
   
   </div>
   )
