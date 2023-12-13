@@ -1,0 +1,139 @@
+.gallery{
+  text-align: center;
+  background-color: pink;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-gap: 10px; /* Space between images */
+  max-width: 45%; /* Width of the entire grid */
+  margin: 50px auto; /* Centers the grid horizontally with top and bottom margin */
+}
+.image-grid img {
+  width: 100%; /* Full width of the grid cell */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.menu_button {
+  border-radius: 20px; /* Adjust for rounded corners */
+  background-color: white; /* White background */
+  color: black; /* Text color */
+  padding: 6px 40px; /* Padding around the text */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline for link text */
+  display: inline-block; /* Allows setting of width and height */
+  font-size: 20px; /* Font size */
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* Formal font, can change to other fonts like 'Times New Roman', etc. */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.menu_button:hover {
+  background-color: #f2f2f2; /* Slightly different background on hover for visual feedback */
+}
+
+
+.menu{
+  background-color: pink;
+  text-align: center;
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.contact{
+ color:green;
+
+
+}
+
+
+.book_now{
+     padding-left: 1600px;
+     margin-bottom: 200px;
+}
+
+.header{
+  padding-left: 800px;
+  
+}
+.pic{
+  padding-left: 450px;
+}
+
+.cotacory{
+  background-color: rgb(254,252,237); /* Background color */
+  display: flex;
+  align-items: center; /* Align text to the left */
+  justify-content: space-around;
+}
+
+
+.headeres {
+  position: fixed; /* Fixed position */
+  top: 0;
+  left: 0;          
+  width: 100%;     /* Full width */
+  height: 230px;
+  background-color: rgb(254,252,237); /* Background color */
+  display: flex;
+  align-items: center; /* Align text to the left */
+  justify-content: space-around;
+  /* box-shadow: 0px 2px 5px rgba(0,0,0,0.2); Optional: adds a shadow for better visibility */
+
+}
+
+.logo {
+  position: relative;
+  left: 130px;
+  width: auto;
+  height: 100%;
+}
+.logo img{
+  width:auto;
+  height:100%
+}
+
+.headeres a {
+  margin: 10px; /* Spacing around buttons */
+  padding: 10px; /* Padding inside buttons */
+
+}
+.submenu {
+  display: none; /* Initially hidden */
+  position: absolute; /* Adjust as per your layout */
+  /* Add more styles for submenu */
+}
+
+.category div:hover .submenu {
+  display: block; /* Show on hover */
+}
+
+
+
+.book button{
+  font-size: 1.6rem;
+  font-family: Snell Roundhand, cursive;
+  font-style: italic;
+  color: darkgreen;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: URW Chancery L, cursive; /* Change to your desired font */
+  text-decoration: none; /* Removes underline */
+  color: black; /* Sets the text color; change as needed */
+
+  /* To prevent color change on click (visited link) */
+  &:visited {
+    color: black;
+  }
+}
+
+
+.contact_page{
+padding-top: 400px;
+text-align: center;
+}
+
+
