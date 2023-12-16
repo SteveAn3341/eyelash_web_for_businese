@@ -1,0 +1,248 @@
+
+.book-now-button{
+  font-size: 1.4rem;
+  font-family: Snell Roundhand, cursive;
+  font-style: italic;
+  color: darkgreen;
+  background-color: rgb(237, 255, 251);
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding around text */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px #0098b3; /* Shadow effect to create 3D look */
+  transition: all 0.3s ease; /* Smooth transition for click effect */
+}
+.book-now-button:active{
+  box-shadow: 0 2px #009bb3; /* Smaller shadow for clicked effect */
+  transform: translateY(2px); /* Slight move down to mimic click */
+}
+.book_now{
+     padding-left: 1600px;
+     margin-bottom: 200px;
+}
+
+.bottom{
+  height:auto;
+  font-size:16px;
+  padding: 15px 32px;
+  padding-bottom: 10px;
+  border: none;
+  display:flex;
+  justify-content: space-around; 
+  align-items: center;
+  text-align: center;
+  background-color: rgb(254,252,237);
+  z-index: 10;
+}
+.category{
+  background-color: rgb(254,252,237); /* Background color */
+  display: flex;
+  align-items: center; /* Align text to the left */
+  justify-content: space-around;
+}
+.contact{
+  padding-top: 150px;
+  padding-bottom: 10px;
+  color:green;
+  background-color: pink;
+  text-align: center;
+}
+.contact_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.contact_info {
+  flex: 1; /* Takes up half the space of the container */
+  padding-right: 20px; /* Adds some spacing between the text and map */
+  text-align: center;
+}
+.contact_page{
+  padding-bottom: 0px;
+  z-index: 20;
+  align-items: left;
+  background-color: pink;
+}
+
+.gallery{
+  padding-top: 320px;
+  text-align: center;
+  background-color: pink;
+  z-index: 20;
+}
+
+.header{
+  padding-left: 800px;
+  
+}
+
+.headeres {
+  position: fixed; /* Fixed position */
+  top: 0;
+  left: 0;          
+  width: 100%;     /* Full width */
+  height: 130px;
+  background-color: rgb(254,252,237); /* Background color */
+  display: flex;
+  align-items: center; /* Align text to the left */
+  justify-content: space-around;
+  z-index: 30;
+  /* box-shadow: 0px 2px 5px rgba(0,0,0,0.2); Optional: adds a shadow for better visibility */
+}
+.headeres a {
+  margin: 10px; /* Spacing around buttons */
+  padding: 30px; /* Padding inside buttons */
+
+}
+.iframe-container {
+  flex:1;
+  position: relative;
+  overflow: hidden;
+  padding-top: 32%; /* 16:9 Aspect Ratio */
+  padding-right: 20%;
+  /* margin-bottom: 0px; Optional spacing */
+  z-index: 20;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-gap: 10px; /* Space between images */
+  max-width: 45%; /* Width of the entire grid */
+  margin: 50px auto; /* Centers the grid horizontally with top and bottom margin */
+}
+
+.image-grid img {
+  width: 100%; /* Full width of the grid cell */
+  height: auto; /* Maintain aspect ratio */
+}
+.logo {
+  position: relative;
+  left: 130px;
+  width: auto;
+  height: 100%;
+}
+.logo img{
+  width:auto;
+  height:100%
+}
+
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.menu{
+  background-color: pink;
+  text-align: center;
+  padding-top: 320px;
+  padding-bottom: 250px;
+  z-index: 20;
+}
+.menu_button {
+  border-radius: 20px; /* Adjust for rounded corners */
+  background-color: pink; /* White background */
+  color: black; /* Text color */
+  padding: 6px 40px; /* Padding around the text */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline for link text */
+  display: inline-block; /* Allows setting of width and height */
+  font-size: 20px; /* Font size */
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* Formal font, can change to other fonts like 'Times New Roman', etc. */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  z-index: 20;
+}
+.menu_button:hover {
+  background-color: rgba(216, 89, 50, 0.119); 
+  /* Slightly different background on hover for visual feedback */
+}
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif; /* Change to your desired font */
+  text-decoration: none; /* Removes underline */
+  color: black; /* Sets the text color; change as needed */
+  /* To prevent color change on click (visited link) */
+  &:visited {
+    color: black;
+  }
+}
+.pic{
+  padding-left: 450px;
+}
+
+
+
+
+.submenu {
+  display: none; /* Initially hidden */
+  position: absolute; /* Adjust as per your layout */
+  /* Add more styles for submenu */
+}
+
+
+
+.form-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+
+
+
+.body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding-top: 120px;
+}
+
+
+
+
+.label {
+  margin-bottom: 5px;
+}
+
+
+.input {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.input:hover {
+  background: #0056b3;
+}
+
+
+.employee{
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif; /* Change to your desired font */
+  text-decoration: none; /* Removes underline */
+  color: black; /* Sets the text color; change as needed */
+  /* To prevent color change on click (visited link) */
+  &:visited {
+    color: black;
+  }
+
+
+}
+
