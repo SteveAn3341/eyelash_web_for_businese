@@ -6,6 +6,9 @@ import {Home} from "./components/home"
 import {Contact} from './components/contaccts'
 import BookingPage from './components/booknow'
 import { Employee } from './components/employee'
+
+
+
 function App() {
   return (
   <>
@@ -13,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/home" element={<Home/>}/>
-        <Route path="/employee" element={<Employee/>}/>
+        <Route path="/employee_page" element={<Employee/>}/>
         <Route path="/menu" element={<Menu/>} />
         <Route path="/gallery" element={<Gallery/>} />
         <Route path="/contact" element={<Contact/>} />
@@ -23,5 +26,9 @@ function App() {
   </>
   )
 }
+
+
+
+
 
 export default App

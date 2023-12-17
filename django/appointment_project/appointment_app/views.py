@@ -7,6 +7,8 @@ from .models import Employee, Customer, Service ,Appointment
 from .serializer import AppointmentSerializer
 import os 
 from django.conf import settings
+
+
 @api_view(["POST"])
 def employee(request):
     name = request.data.get('name')
