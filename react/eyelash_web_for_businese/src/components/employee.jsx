@@ -1,8 +1,12 @@
 import '../App.css'
 import { AddEmployee } from './utility'
+<<<<<<< HEAD
+import {useState} from "react"
+=======
 import {useState} from 'react'
 import 'react-router-dom'
 import {Link} from 'react-router-dom'
+>>>>>>> 62c34368a376e9ce058a239bb7df89be6f054337
 
 export const Employee = () => {
 
@@ -44,11 +48,23 @@ export const Employee = () => {
   <div className='body'>
   <div className="form-container">  
   <h2>Add New Employee</h2>
+<<<<<<< HEAD
+  <form onSubmit = {handleSubmit} className ='form' >
+
+      <label className = 'lable' htmlFor="name">Name:</label>
+      <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} value={name}/>
+  
+      <input className = 'input' type="submit" value="Add Employee"/>
+  </form>
+  
+  
+=======
     <form onSubmit = {handleSubmit} className ='form' >
         <label className = 'lable' htmlFor="name">Name:</label>
         <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} value={name}/>
         <input className = 'input' type="submit" value="Add Employee"/>
     </form>
+>>>>>>> 62c34368a376e9ce058a239bb7df89be6f054337
   </div>
   
   </div>
