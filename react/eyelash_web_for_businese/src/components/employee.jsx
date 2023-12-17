@@ -1,6 +1,7 @@
 
 import '../App.css'
 import { AddEmployee } from './utility'
+import {useState} from "react"
 
 export const Employee = () => {
 
@@ -31,7 +32,7 @@ export const Employee = () => {
   <h2>Add New Employee</h2>
   <form onSubmit = {handleSubmit} className ='form' >
 
-      <label className = 'lable' for="name">Name:</label>
+      <label className = 'lable' htmlFor="name">Name:</label>
       <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} value={name}/>
   
       <input className = 'input' type="submit" value="Add Employee"/>

@@ -14,6 +14,7 @@ function App() {
   <Router>
     <h1><Main/></h1>
     <Routes>
+      <Route path = "/" element = {<Main/>} />
       <Route path="/employee" element={<Employee/>} />
       <Route path="/menu" element={<Menu/>} />
       <Route path="/gallery" element={<Gallery/>} />

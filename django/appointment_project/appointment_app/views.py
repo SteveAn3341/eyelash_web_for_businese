@@ -5,7 +5,8 @@ from rest_framework import status
 from rest_framework import serializers
 from .models import Employee, Customer, Service ,Appointment
 from .serializer import AppointmentSerializer
-
+import os 
+from django.conf import settings
 @api_view(["POST"])
 def employee(request):
     name = request.data.get('name')
@@ -78,3 +79,6 @@ def appointment(request):
         
         
 
+def index(request):
+    with open(os.path.join(settings.BASE_DIR, 'static', 'index.html'), 'r') as the_index:
+        return Response(the_index.read())
