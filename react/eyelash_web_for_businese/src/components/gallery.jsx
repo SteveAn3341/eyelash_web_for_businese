@@ -11,18 +11,14 @@ export const Gallery = () => {
           <img src="https://static.vecteezy.com/system/resources/previews/022/892/565/original/eyelashes-logo-design-with-unique-style-for-woman-free-vector.jpg" alt="logo"/>
       </div>
       <div className='category'>
-<<<<<<< HEAD
-        <Link to ="/" className="nav-link">Home</Link>
-=======
         <Link to="/home" className="nav-link">Home</Link>
->>>>>>> 62c34368a376e9ce058a239bb7df89be6f054337
         <Link to="/menu"  className="nav-link">Menu</Link>
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
-        <Link to ='/employee'  className="employee">emloyee</Link>
+        <Link to ='/employee'  className="employee">Emloyee</Link>
       </div>
       <div className="book">
-          <Link to ="/booknow" className="book-now-button">Book Now &weierp;</Link>
+          <Link to ="/static/booknow" className="book-now-button">Book Now &weierp;</Link>
       </div></div>
   <div className = 'gallery'>
 

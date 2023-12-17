@@ -8,7 +8,7 @@ export const Home=()=>{
           <img src="https://static.vecteezy.com/system/resources/previews/022/892/565/original/eyelashes-logo-design-with-unique-style-for-woman-free-vector.jpg" alt="logo"/>
       </div>
       <div className='category'>
-        <Link to className="nav-link">Home</Link>
+        <Link to="/home" className="nav-link">Home</Link>
         <Link to="/menu"  className="nav-link">Menu</Link>
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>

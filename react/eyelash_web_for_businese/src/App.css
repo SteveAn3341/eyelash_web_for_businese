@@ -1,7 +1,8 @@
 .appointment-summary {
   width: 25%;
   /* border: 1px solid #ccc; */
-  padding: 20px;
+  padding: 0px;
+  padding-top:0px;
   text-align: center;
   flex:2;
   flex-wrap:wrap;
@@ -299,7 +300,9 @@ selected-service {
   position: absolute; /* Adjust as per your layout */
   /* Add more styles for submenu */
 }
-
+.timeline {
+  padding-top: 30px;
+}
 
 
 

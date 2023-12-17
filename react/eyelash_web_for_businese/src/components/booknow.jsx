@@ -35,11 +35,40 @@ const initialServices={
 const BookingPage = () => {
   const [services, setServices] = useState(initialServices)
   const [selectedServices, setSelectedServices] = useState([])
+  const [selectedStylists, setSelectedStylists] = useState([])
+  const [visibleStylists, setVisibleStylists] = useState([])
 
-  const handleAddService = (serviceToAdd) => {
-    setSelectedServices(prevSelectedServices => [...prevSelectedServices, serviceToAdd]);
+  const toggleStylistList = (serviceId) => {
+    setVisibleStylists(prevVisibleStylists => ({
+      ...prevVisibleStylists,
+      [serviceId]:!preVisibleStylists[serviceId],
+    }))
+  }
+
+  const handleAddService = (serviceToAdd,stylistToAdd) => {
+    setSelectedStylists(prevSelectedStylists => ({
+      ...prevSelectedStylists,
+      [serviceToAdd.id]: stylistToAdd
+    }))
   };
 
+  const fetchStylists = () => {
+    return [
+      {id: '1', name: 'Medalit L. | Senior Stylist'},
+      {id: '2', name: 'Medalit L.2 | Senior Stylist'}
+    ]
+  }
+  const renderStylistOptions = (serviceId,isVisible) =>{
+    if (!isVisible) return null;
+
+    /* fetchStylists provide a list of stylists that are available */
+    const stylists=fetchStylists();
+    return stylists.map(stylist => (
+      <button key={stylist.id} onClick={() => handleAddService(services[serviceId], stylist.name)}>
+        {stylist.name}
+      </button>
+    ))
+  }
   return (
     <>
     <div className='headeres'>
@@ -47,27 +76,17 @@ const BookingPage = () => {
           <img src="https://static.vecteezy.com/system/resources/previews/022/892/565/original/eyelashes-logo-design-with-unique-style-for-woman-free-vector.jpg" alt="logo"/>
       </div>
       <div className='category'>
-<<<<<<< HEAD
-        <Link className="nav_link" >Home</Link>
-        <Link to="/menu"  className="nav-link">Menu</Link>  
-        <Link to="/gallary"  className="nav-link">Gallery</Link>
-        <Link to="/contact"  className="nav-link">Contact</Link>
-        <Link to ='/employee'  className="employee">emloyee</Link>
-        
-
-=======
         <Link to="/home" className="nav-link">Home</Link>
         <Link to="/menu"  className="nav-link">Menu</Link>
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
-        <Link to ='/employee'  className="employee">emloyee</Link>
->>>>>>> 62c34368a376e9ce058a239bb7df89be6f054337
+        <Link to ='/employee'  className="employee">Emloyee</Link>
       </div>
       <div className="book">
           <Link to ="/booknow" className="book-now-button">Book Now &weierp;</Link>
       </div></div>
     <div className = "bookPage" >
-      <h1>Book Your Appointment</h1>
+      <h1 className="timeline">Book Your Appointment</h1>
         <div className="booking-container">
           <div className="service-list">
             {Object.keys(services).map((category) => (
@@ -76,6 +95,8 @@ const BookingPage = () => {
                 {services[category].map((serviceItem) => (
                   <div key={serviceItem.id} className="service-item">
                     <div className="service-item-name">{serviceItem.name}</div>
+                    {/*Render stylist options when Add is clicked*/}
+                    {/* {renderStylistOptions(serviceItem.id)} */}
                     <button onClick={() => handleAddService(serviceItem)}>Add</button>
                   </div>
                 ))}
