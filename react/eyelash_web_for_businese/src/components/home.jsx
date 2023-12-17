@@ -12,7 +12,7 @@ export const Home=()=>{
         <Link to="/menu"  className="nav-link">Menu</Link>
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
-        <Link to ='/employee'  className="employee">Emloyee</Link>
+        <Link to ='/employee_page'  className="employee">Emloyee</Link>
       </div>
       <div className="book">
           <Link to ="/booknow" className="book-now-button">Book Now &weierp;</Link>
