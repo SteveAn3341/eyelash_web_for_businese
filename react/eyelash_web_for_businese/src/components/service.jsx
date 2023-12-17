@@ -40,6 +40,10 @@ export const Service = () => {
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
         <Link to ='/employee_page'  className="employee">emloyee</Link>
+        <Link to ='/service_page'  className="employee">Service</Link>
+        <Link to ="/customer_page"  className="employee">Customer</Link>
+
+      
       </div>
 
 

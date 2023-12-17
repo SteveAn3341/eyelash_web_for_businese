@@ -14,11 +14,11 @@ export const Customer = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const success = await AddCustomer(name);
+      const success = await AddCustomer(name,email,phone);
       if (success) {
-        console.log('add service success');
+        console.log('add customer success');
       } else {
-        console.log('add service failed');
+        console.log('add customer failed');
       }
     } catch (error) {
       console.error('Error during sign up:', error);
@@ -42,7 +42,9 @@ export const Customer = () => {
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
         <Link to ='/employee_page'  className="employee">emloyee</Link>
-
+        <Link to ="/service_page"  className="employee">Service</Link>
+        <Link to ="/customer_page"  className="employee">Customer</Link>
+        
       </div>
 
 
@@ -55,7 +57,7 @@ export const Customer = () => {
 
 
 
-  <h2>Add New Service</h2>
+  <h2>New Customer</h2>
     <form onSubmit = {handleSubmit} className ='form' >
         <label className = 'lable' htmlFor="name">Name:</label>
         <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} value={name}/>
@@ -66,7 +68,7 @@ export const Customer = () => {
 
         <label className = 'lable' htmlFor="phone">phone</label>
         <input type="text" id="phone" phone ="phone" onChange={(e)=>setPhone(e.target.value)} value={phone}/>
-        <input className = 'input' type="submit" value="Add Service"/>
+        <input className = 'input' type="submit" value="Add Customer"/>
     </form>
   </div>
   
