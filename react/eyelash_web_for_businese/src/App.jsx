@@ -6,7 +6,7 @@ import {Home} from "./components/home"
 import {Contact} from './components/contaccts'
 import BookingPage from './components/booknow'
 import { Employee } from './components/employee'
-
+import {Service}  from './components/service'
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
         <Route path="/gallery" element={<Gallery/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/booknow" element={<BookingPage/>}/>
+        <Route path="/service" element={<Service/>}/>
       </Routes>
     </Router>
   </>

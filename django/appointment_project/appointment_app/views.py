@@ -31,12 +31,12 @@ def customer(request):
 
 @api_view(["POST"])
 def service(request):
-    service_name = request.data.get('service')
+    service_name = request.data.get('service_name')
     if not service_name:
         return Response({'error': 'Service name is required'}, status=status.HTTP_400_BAD_REQUEST)
 
-    new_service = Service.objects.create(name=service_name)
-    return Response({'new_service added': True}, status=status.HTTP_201_CREATED)
+    new_service = Service.objects.create(service_name=service_name)
+    return Response({'new_service_name added': True}, status=status.HTTP_201_CREATED)
 
 
 
@@ -79,7 +79,11 @@ def appointment(request):
             return Response(serializer.data, status=201)  # 201 Created
         return Response(serializer.errors, status=400)  # 400 Bad Request
         
-        
+
+
+
+
+
 
 def index(request):
     with open(os.path.join(settings.BASE_DIR, 'static', 'index.html'), 'r') as the_index:

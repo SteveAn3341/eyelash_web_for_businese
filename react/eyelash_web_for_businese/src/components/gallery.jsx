@@ -17,6 +17,7 @@ export const Gallery = () => {
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
         <Link to ='/employee_page'  className="employee">emloyee</Link>
+        <Link to ='/service'  className="employee">Service</Link>
       </div>
       <div className="book">
           <Link to ="/booknow" className="book-now-button">Book Now &weierp;</Link>
