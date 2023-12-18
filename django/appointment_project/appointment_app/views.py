@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import serializers
 from .models import Employee, Customer, Service ,Appointment
 from .serializer import AppointmentSerializer
 import os 
 from django.conf import settings
+from rest_framework.decorators import api_view 
+from django.contrib.auth import authenticate, login, logout
+from django.core.serializers import serialize
+import json
+from django.http import JsonResponse
+from .models import CustomUser
+from django.contrib.auth.hashers import make_password
+
 
 
 @api_view(["POST"])
@@ -14,9 +20,10 @@ def employee(request):
     name = request.data.get('name')
     if not name:
         return Response({'error': 'Name is required'}, status=status.HTTP_400_BAD_REQUEST)
-
     new_employee = Employee.objects.create(name=name)
     return Response({'new_employee added': True}, status=status.HTTP_201_CREATED)
+
+
 
 @api_view(["POST"])
 def customer(request):
@@ -25,16 +32,16 @@ def customer(request):
     phone = request.data.get('phone')
     if not all([name, email, phone]):
         return Response({'error': 'All fields are required'}, status=status.HTTP_400_BAD_REQUEST)
-
     new_customer = Customer.objects.create(name=name, email=email, phone=phone)
     return Response({'new_customer added': True}, status=status.HTTP_201_CREATED)
+
+
 
 @api_view(["POST"])
 def service(request):
     service_name = request.data.get('service_name')
     if not service_name:
         return Response({'error': 'Service name is required'}, status=status.HTTP_400_BAD_REQUEST)
-
     new_service = Service.objects.create(service_name=service_name)
     return Response({'new_service_name added': True}, status=status.HTTP_201_CREATED)
 
@@ -88,3 +95,35 @@ def appointment(request):
 def index(request):
     with open(os.path.join(settings.BASE_DIR, 'static', 'index.html'), 'r') as the_index:
         return Response(the_index.read())
+    
+    
+  
+
+    
+@api_view(["GET","POST"])
+def signup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        try:
+            user = CustomUser.objects.create(email=email, password=make_password(password))
+            user.save()
+            return JsonResponse({'message': 'User created successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+    
+
+
+@api_view(["GET","POST"])
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'message': 'Login successful'}, status=200)
+        else:
+            return JsonResponse({'error': 'Invalid credentials'}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=400)

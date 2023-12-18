@@ -26,3 +26,29 @@ export const AddCustomer = async (name,email,phone) =>{
   console.log(response.data)
   return response.data
 }
+
+
+
+export const Loginfunction = async(email, password) =>{
+  getToken()
+  const response = await axios.post(`/login/`, {
+    email: email,
+    password: password
+  })
+
+console.log(response);
+console.log(response.data.success);
+window.location.reload()
+
+  return response.data.Loginfunction;
+}
+
+
+export const LogOut = async() =>{
+  getToken()
+  const response = await axios.post(`/logout/`)
+console.log(response.data.success);
+window.location.reload()
+
+  return response.data.LogOut;
+}
