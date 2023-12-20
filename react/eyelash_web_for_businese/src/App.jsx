@@ -9,6 +9,8 @@ import { Employee } from './components/employee'
 import {Service}  from './components/service'
 import { Customer } from './components/customer'
 import { Login } from './components/login'
+import { Owner } from './components/owner'
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/service_page" element={<Service/>}/>
         <Route path="/customer_page" element={<Customer/>}/>
         <Route path="/login_page" element={<Login/>}/>
+        <Route path="/owner" element={<Owner/>}/>
+
       </Routes>
     </Router>
   </>

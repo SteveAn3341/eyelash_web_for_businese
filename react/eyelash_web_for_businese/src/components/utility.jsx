@@ -1,6 +1,10 @@
 import { getToken } from "./csrftoken"
 import axios from "axios"
 
+
+
+
+
 export const AddEmployee = async (name) =>{
   getToken()
   const response = await axios.post(`/employee/`, { name: name })
@@ -29,26 +33,69 @@ export const AddCustomer = async (name,email,phone) =>{
 
 
 
-export const Loginfunction = async(email, password) =>{
-  getToken()
-  const response = await axios.post(`/login/`, {
-    email: email,
-    password: password
-  })
 
-console.log(response);
-console.log(response.data.success);
-window.location.reload()
 
-  return response.data.Loginfunction;
+
+
+
+
+
+
+
+
+
+
+
+
+export const Loginfunction = async (email, password) => {
+// getToken() is not necessary here if you're setting headers directly in the request
+getToken()
+
+
+try {
+  // Include postRequestConf in the Axios request
+  const response = await axios.post(`/login/`, { email, password }, {
+    withCredentials: true // Include this line
+  });
+
+  console.log(response);
+  // Adjust the following line based on your actual response structure
+  if (response.data.success) {
+    // Handle login success, e.g., redirecting to another page
+    return true;
+  } else {
+    // Handle login failure
+    return false;
+  }
+} catch (error) {
+  console.error('Login error:', error);
+  // Handle the error appropriately
+  return false;
 }
+};
 
 
-export const LogOut = async() =>{
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const LogOut = async() => {
   getToken()
-  const response = await axios.post(`/logout/`)
-console.log(response.data.success);
-window.location.reload()
-
-  return response.data.LogOut;
+  try {
+    const response = await axios.post(`/logout/`);
+    console.log(response.data);
+    return response.data.signout; // Changed from .success to .signout
+  } catch (error) {
+    console.error('Logout error:', error);
+    return false; // In case of an error, return false
+  }
 }

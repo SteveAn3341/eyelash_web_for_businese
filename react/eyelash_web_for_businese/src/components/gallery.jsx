@@ -1,27 +1,74 @@
 import {Link} from 'react-router-dom'
 import "../App.css"
+import {useState} from 'react'
+
 
 export const Gallery = () => {
 
 
+
+
+  const [buttonClass, setButtonClass] = useState('');
+
+  const handleMouseEnter = () => {
+      setButtonClass('hover');
+      document.querySelector('.submit h3').textContent = "Now";
+  };
+
+  const handleMouseLeave = () => {
+      setButtonClass('');
+      document.querySelector('.submit h3').textContent = "Book";
+  };
+
+  const handleClick = () => {
+      setButtonClass('active');
+  };
+
+
+
+
+
+
   return(
     <>
-    <div className='headeres'>
+     
+            <div className='headeres'>
       <div className='logo'>
           <img src="https://static.vecteezy.com/system/resources/previews/022/892/565/original/eyelashes-logo-design-with-unique-style-for-woman-free-vector.jpg" alt="logo"/>
       </div>
       <div className='category'>
+        <Link to ="/login_page"   className="employee">Login</Link>
         <Link to="/home" className="nav-link">Home</Link>
         <Link to="/menu"  className="nav-link">Menu</Link>
         <Link to="/gallery"  className="nav-link">Gallery</Link>
         <Link to="/contact"  className="nav-link">Contact</Link>
-        <Link to ='/employee_page'  className="employee">emloyee</Link>
-        <Link to ="/service_page"  className="employee">Service</Link>
         <Link to ="/customer_page"  className="employee">Customer</Link>
       </div>
-      <div className="book">
-          <Link to ="/static/booknow" className="book-now-button">Book Now &weierp;</Link>
+      <div className=" mov">
+
+      <body className="whole_body">
+		<div className={`button ${buttonClass}`}
+
+
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}>
+   
+   <Link to ="/booknow" className="book-now-button"><div className="submit"><h3>Book </h3></div></Link>
+			<div className="arrow">
+				<div className="top line"></div>
+				<div className="bottom line"></div>
+			</div>
+		</div>
+		<p className="instructions">Hover and then click</p>
+	</body>
+
       </div></div>
+
+
+
+
+
   <div className = 'gallery'>
 
   <h1 >Gallery</h1>
@@ -38,7 +85,7 @@ export const Gallery = () => {
       <img src = 'https://media.istockphoto.com/id/648878964/photo/woman-eye-with-long-eyelashes-eyelash-extension-lashes-close-up-selective-focus.jpg?s=612x612&w=0&k=20&c=6rfCb6VvKLUhchmCrSEDQeQzfaAISOSqz10Sv3JlF6I='></img>
     </div>
   
-  <div className="bottom">
+  <div className="bottom_l">
         <p>11135 1st Ave,<br/>
         Whittier, CA 90603<br/> 
         562-315-5517<br/> 

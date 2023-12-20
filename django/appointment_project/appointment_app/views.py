@@ -9,9 +9,10 @@ from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate, login, logout
 from django.core.serializers import serialize
 import json
-from django.http import JsonResponse
-from .models import CustomUser
+from django.http import JsonResponse, HttpResponse
+from .models import App_User
 from django.contrib.auth.hashers import make_password
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -94,7 +95,7 @@ def appointment(request):
 
 def index(request):
     with open(os.path.join(settings.BASE_DIR, 'static', 'index.html'), 'r') as the_index:
-        return Response(the_index.read())
+        return HttpResponse(the_index.read())
     
     
   
@@ -106,7 +107,7 @@ def signup(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         try:
-            user = CustomUser.objects.create(email=email, password=make_password(password))
+            user = App_User.objects.create(userName=email, password=make_password(password))
             user.save()
             return JsonResponse({'message': 'User created successfully'}, status=200)
         except Exception as e:
@@ -115,15 +116,43 @@ def signup(request):
     
 
 
-@api_view(["GET","POST"])
+
+
+@api_view(['POST'])
 def login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            login(request, user)
-            return JsonResponse({'message': 'Login successful'}, status=200)
-        else:
-            return JsonResponse({'error': 'Invalid credentials'}, status=400)
-    return JsonResponse({'error': 'Invalid request'}, status=400)
+    email = request.data.get('email')
+    password = request.data.get('password')
+    user = authenticate(request, username=email, password=password)
+    if user is not None:
+        login(request, user)
+        return JsonResponse({'success': True, 'message': 'Login successful'})
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid credentials'}, status=400)
+
+
+
+
+
+
+
+@api_view(["GET"])
+def curr_user(request):
+    if request.user.is_authenticated:
+        user_info = serialize("json", [request.user], fields = ['name', 'email'])
+        user_info_workable = json.loads(user_info)
+        return JsonResponse({'user':user_info_workable[0]['fields']})
+    else:
+        return JsonResponse({'user':None})
+    
+    
+    
+    
+@api_view(["POST"])
+def logout_view(request):
+    try:
+        logout(request)
+        return JsonResponse({'signout':True})
+    except Exception as e:
+        print(e)
+        return JsonResponse({'signout':False})
+    
