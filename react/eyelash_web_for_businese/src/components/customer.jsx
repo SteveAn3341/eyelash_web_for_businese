@@ -25,6 +25,7 @@ export const Customer = () => {
         setLastName(" ")
         setPhone(" ")
         navigate('/booknow/');
+        
       } else {
         console.log('add customer failed');
       }

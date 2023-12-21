@@ -6,37 +6,7 @@ import {EmployeeBar} from "./employeebar"
 
 
 
-const initialServices={
-  Eyelash_Extension_Refills: [
-    {id:1, name: 'Classic Refill'},
-    {id:2, name: 'Hybrid Refill'},
-    {id:3, name: 'Volume Refill'}
-  ],
-  Eyelash_Extension_Fullset: [
-    {id:4, name: 'Eyelash Consultation'},
-    {id:5, name: 'Classic: Level 1 Full Set (Full)'},
-    {id:6, name: 'Classic: Level 2 Full Set (Fuller)'},
-    {id:7, name: 'Classic: Level 3 Full Set (Fullest)'},
-    {id:8, name: 'Hybrid: Level 1 Full Set (Full)'},
-    {id:9, name: 'Hybrid: Level 2 Full Set (Full)'},
-    {id:10, name: 'Hybrid: Level 3 Full Set (Full)'},
 
-  ],
-  Lifts_or_Brows: [
-    {id:11, name:'Lash Lift'},
-    {id:12, name:'Bow Lamination'},
-  ],
-  Permanent_Makeup: [
-    {id:13, name: 'Consulation'},
-    {id:14, name: 'Microblading'},
-    {id:15, name: 'Microblading Follow Up'}
-  ],
-  Tinting: [
-    {id:16, name: 'Lash & Brow Tinting'},
-    {id:17, name: 'Lash Tinting'},
-    {id:18, name: 'Brow Tinting'}
-  ]
-}
 
 
 
@@ -55,49 +25,71 @@ const initialServices={
 
 
 const BookingPage = () => {
+
+
+
+  const initialServices={
+    Eyelash_Extension_Refills: [
+      {id:1, name: 'Classic Refill'},
+      {id:2, name: 'Hybrid Refill'},
+      {id:3, name: 'Volume Refill'}
+    ],
+    Eyelash_Extension_Fullset: [
+      {id:4, name: 'Eyelash Consultation'},
+      {id:5, name: 'Classic: Level 1 Full Set (Full)'},
+      {id:6, name: 'Classic: Level 2 Full Set (Fuller)'},
+      {id:7, name: 'Classic: Level 3 Full Set (Fullest)'},
+      {id:8, name: 'Hybrid: Level 1 Full Set (Full)'},
+      {id:9, name: 'Hybrid: Level 2 Full Set (Full)'},
+      {id:10, name: 'Hybrid: Level 3 Full Set (Full)'},
+  
+    ],
+    Lifts_or_Brows: [
+      {id:11, name:'Lash Lift'},
+      {id:12, name:'Bow Lamination'},
+    ],
+    Permanent_Makeup: [
+      {id:13, name: 'Consulation'},
+      {id:14, name: 'Microblading'},
+      {id:15, name: 'Microblading Follow Up'}
+    ],
+    Tinting: [
+      {id:16, name: 'Lash & Brow Tinting'},
+      {id:17, name: 'Lash Tinting'},
+      {id:18, name: 'Brow Tinting'}
+    ]
+  }
+
+
   const [services, setServices] = useState(initialServices)
   const [selectedServices, setSelectedServices] = useState([])
   const [selectedStylists, setSelectedStylists] = useState([])
-  const [visibleStylists, setVisibleStylists] = useState([])
+
 
   
   const [activeService, setActiveService] = useState(null);
   const [showEmployeeBar, setShowEmployeeBar] = useState(false);
 
 
-  const toggleStylistList = (serviceId) => {
-    setVisibleStylists(prevVisibleStylists => ({
-      ...prevVisibleStylists,
-      [serviceId]:!prevVisibleStylists[serviceId],
-    }))
-  }
 
-  const handleAddService = (serviceToAdd,stylistToAdd) => {
+
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedEmployee, setSelectedEmployee] = useState({});
+
+
+
+  
+  const handleAddService = (serviceToAdd) => {
     setShowEmployeeBar(true);
     setActiveService(serviceToAdd);
-    setSelectedStylists(prevSelectedStylists => ({
-      ...prevSelectedStylists,
-      [serviceToAdd.id]: stylistToAdd
-    }))
+    setSelectedServices([...selectedServices, serviceToAdd]); 
+    console.log(selectedServices);
+    
+   
   };
 
-  const fetchStylists = () => {
-    return [
-      {id: '1', name: 'Medalit L. | Senior Stylist'},
-      {id: '2', name: 'Medalit L.2 | Senior Stylist'}
-    ]
-  }
-  const renderStylistOptions = (serviceId,isVisible) =>{
-    if (!isVisible) return null;
 
-    /* fetchStylists provide a list of stylists that are available */
-    const stylists=fetchStylists();
-    return stylists.map(stylist => (
-      <button key={stylist.id} onClick={() => handleAddService(services[serviceId], stylist.name)}>
-        {stylist.name}
-      </button>
-    ))
-  }
+
 
 
 
@@ -109,7 +101,16 @@ const BookingPage = () => {
 
 
 
-
+  const handleSelectEmployee = (employee, serviceId) => {
+    console.log("Employee selected:", employee, "Service ID:", serviceId);
+    console.log("Type of Service ID:", typeof serviceId); // Should be 'number' or 'string'
+    console.log("Employee Object:", employee); // Should be an object
+  
+    setSelectedEmployee(prevEmployees => ({
+      ...prevEmployees,
+      [serviceId]: employee // Ensure this is correctly setting the employee object
+    }));
+  };
 
 
 
@@ -150,12 +151,16 @@ const BookingPage = () => {
                     <div className="service-item-name">{serviceItem.name}</div>
                     {/*Render stylist options when Add is clicked*/}
                     {/* {renderStylistOptions(serviceItem.id)} */}
-                    <button onClick={() => handleAddService(serviceItem)}>Add</button>
+                    <button onClick={() => handleAddService (serviceItem)}>Add</button>
                     </div>
 
                     {activeService && activeService.id === serviceItem.id && showEmployeeBar && (
       <div className="employee-bar-container">
-      <EmployeeBar service={activeService} showEmployeeBar={showEmployeeBar}  onClose={handleCloseEmployeeBar}/>
+      <EmployeeBar service={activeService} showEmployeeBar={showEmployeeBar}  onClose= {handleCloseEmployeeBar}  onSelectEmployee={handleSelectEmployee} />
+
+
+
+
       </div>
     )}
                   </div>
@@ -203,16 +208,21 @@ const BookingPage = () => {
 
 
         <div className="appointment-summary">
-          <h2>Your appointments</h2>
-          {selectedServices.length === 0 && <p>Select a service on the left.</p>}
-          {selectedServices.map((service) => (
-            <div key={serviceItem.id} className="selected-service">
-              {serviceItem.name}
-            </div>
-          ))}
+  <h2>Your appointments</h2>
+  {selectedServices.length === 0 && <p>Select a service on the left.</p>}
+  {selectedServices.map((service, index) => (
+    <div key={index} className="selected-service">
+      <p>Service: {service.name}</p>
+      {selectedEmployee[service.id] && (
+        <p>Selected Employee: {selectedEmployee[service.id].name}</p>
+      )}
+    </div>
+  ))}
+</div>
+  
         </div>
       </div>
-    </div>
+    
     
     
 
@@ -221,6 +231,6 @@ const BookingPage = () => {
     </>
    
   )
-};
 
+          }
 export default BookingPage;
