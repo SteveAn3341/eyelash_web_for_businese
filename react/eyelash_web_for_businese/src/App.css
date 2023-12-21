@@ -95,6 +95,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   margin: 40px auto;
+  
+  
+ 
+
 }
 .gallery{
   padding-top: 320px;
@@ -234,69 +238,17 @@ selected-service {
   margin-bottom: 10px;
 }
 
-.service-category {
-  margin-bottom: 20px;
-  margin-left: 15px;
-  border:1px solid #ccc;
-  background-attachment: fixed;
-  padding: 8px;
-  border-radius: 2px;
-  border: 1px solid #ccc;
-  background-color: white;
-  margin-bottom: 20px;
-}
-.service-category h2{
-  padding: 10px;
-  margin-top:0;
-  margin-bottom: 0;
-  background-color: #f9f9f9;
-  border-bottom: 1px solid #ccc;
-}
-.service-item {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-.service-item:last-child {
-  border-bottom: none;
-}
-.service-item-name {
-  flex-grow: 1;
-}
-.service-item button{
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none; /* No underline */
-  display: inline-block; /*Allows setting width and height */
-  font-size: 16px;
-  margin: 4px, 2px; /*Space around the button */
-  cursor: pointer; /*Pointer cursor on hover*/
-  border-radius: 4px; /*Rounded corners */
-  box-shadow: 0 2px 2px rgba(0,0,0,0.2); /*Adding shadow*/
-  transition-duration: 0.4s; /*Smooth transition for moust events */
-}
-.service-item button:hover{
-  background-color: #45a049;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transform: translateY(-2px);
-}
-.service-list {
-  width: 70%;
-}
 
-.submenu {
-  display: none; /* Initially hidden */
-  position: absolute; /* Adjust as per your layout */
-  /* Add more styles for submenu */
-}
-.timeline {
-  padding-top: 30px;
-}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -478,3 +430,217 @@ p {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+/* .service-item-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Space between service items }*/
+
+.service-item-container {
+  position: relative; /* New */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.employee-bar-container {
+  position: absolute; /* Positioned absolutely */
+  right: -210px; /* Adjust this value based on the width of the employee bar */
+  top: 0;
+  width: 200px; /* Set a fixed width for the employee bar */
+  /* Other styles as needed */
+  z-index: 1;
+}
+
+ /* .employee-bar-container {
+  display: flex; 
+  flex-grow: 0; 
+  flex-shrink: 0; 
+  width: 200px; 
+  overflow: hidden; 
+} */
+
+
+
+
+
+
+
+.service-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align children to the start */
+}
+
+
+
+.service-category {
+  margin-bottom: 20px;
+  margin-left: 15px;
+  border:1px solid #ccc;
+  background-attachment: fixed;
+  padding: 8px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.service-category h2{
+  padding: 10px;
+  margin-top:0;
+  margin-bottom: 0;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+}
+
+.service-item {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  flex-grow: 1;
+  padding-top: 13px;
+} 
+
+
+
+
+.service-item:last-child {
+  border-bottom: none;
+}
+
+
+
+
+
+.service-item-name {
+  /* Add necessary styles here, and ensure it doesn't push the button too far */
+  margin-right: 10px; /* Add space between name and button */
+}
+
+
+
+
+
+
+
+
+
+.service-item button{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none; /* No underline */
+  display: inline-block; /*Allows setting width and height */
+  font-size: 16px;
+  margin: 4px, 2px; /*Space around the button */
+  cursor: pointer; /*Pointer cursor on hover*/
+  border-radius: 4px; /*Rounded corners */
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2); /*Adding shadow*/
+  transition-duration: 0.4s; /*Smooth transition for moust events */
+  
+}
+.service-item button:hover{
+  background-color: #45a049;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+.service-list {
+  width: 70%;
+}
+
+.submenu {
+  display: none; /* Initially hidden */
+  position: absolute; /* Adjust as per your layout */
+  /* Add more styles for submenu */
+}
+.timeline {
+  padding-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.employee-bar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc; /* Example border */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f9f9f9; /* Background color */
+  /* Other styles as needed */
+}
+
+
+
+
+/* .employee-bar {
+  display: flex;
+  flex-direction: column;
+ 
+} */
+
+.employee-bar div {
+  /* Style for individual employee entries */
+  margin-bottom: 10px; /* Space between entries */
+}
+
+
+
+.employee-entry {
+  margin-bottom: 10px; /* Space between entries */
+  /* Additional styling for individual entries */
+}

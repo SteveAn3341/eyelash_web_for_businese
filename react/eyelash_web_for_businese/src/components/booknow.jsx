@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {Link} from 'react-router-dom'
 import { Home } from './home'
-
+import {EmployeeBar} from "./employeebar"
 
 
 
@@ -37,20 +37,44 @@ const initialServices={
     {id:18, name: 'Brow Tinting'}
   ]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const BookingPage = () => {
   const [services, setServices] = useState(initialServices)
   const [selectedServices, setSelectedServices] = useState([])
   const [selectedStylists, setSelectedStylists] = useState([])
   const [visibleStylists, setVisibleStylists] = useState([])
 
+  
+  const [activeService, setActiveService] = useState(null);
+  const [showEmployeeBar, setShowEmployeeBar] = useState(false);
+
+
   const toggleStylistList = (serviceId) => {
     setVisibleStylists(prevVisibleStylists => ({
       ...prevVisibleStylists,
-      [serviceId]:!preVisibleStylists[serviceId],
+      [serviceId]:!prevVisibleStylists[serviceId],
     }))
   }
 
   const handleAddService = (serviceToAdd,stylistToAdd) => {
+    setShowEmployeeBar(true);
+    setActiveService(serviceToAdd);
     setSelectedStylists(prevSelectedStylists => ({
       ...prevSelectedStylists,
       [serviceToAdd.id]: stylistToAdd
@@ -74,6 +98,25 @@ const BookingPage = () => {
       </button>
     ))
   }
+
+
+
+
+  const handleCloseEmployeeBar = () => {
+    setShowEmployeeBar(false); // Set showEmployeeBar to false to hide the EmployeeBar
+  };
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
 
@@ -100,17 +143,65 @@ const BookingPage = () => {
             {Object.keys(services).map((category) => (
               <div key={category} className="service-category">
                 <h2>{category.replace(/_/g, ' ')}</h2>
+
                 {services[category].map((serviceItem) => (
-                  <div key={serviceItem.id} className="service-item">
+                  <div key={serviceItem.id} className="service-item-container">
+                     <div className="service-item">
                     <div className="service-item-name">{serviceItem.name}</div>
                     {/*Render stylist options when Add is clicked*/}
                     {/* {renderStylistOptions(serviceItem.id)} */}
                     <button onClick={() => handleAddService(serviceItem)}>Add</button>
+                    </div>
+
+                    {activeService && activeService.id === serviceItem.id && showEmployeeBar && (
+      <div className="employee-bar-container">
+      <EmployeeBar service={activeService} showEmployeeBar={showEmployeeBar}  onClose={handleCloseEmployeeBar}/>
+      </div>
+    )}
                   </div>
+
                 ))}
               </div>
             ))}
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div className="appointment-summary">
           <h2>Your appointments</h2>
           {selectedServices.length === 0 && <p>Select a service on the left.</p>}
@@ -121,7 +212,14 @@ const BookingPage = () => {
           ))}
         </div>
       </div>
-    </div></>
+    </div>
+    
+    
+
+
+
+    </>
+   
   )
 };
 

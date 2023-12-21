@@ -41,7 +41,7 @@ export const Service = () => {
     </form>
   </div>
   
-  
+  <button><Link to="/home" className="nav-link">Home</Link></button>
   </>
   )
   

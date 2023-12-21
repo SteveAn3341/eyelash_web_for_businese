@@ -10,6 +10,7 @@ import {Service}  from './components/service'
 import { Customer } from './components/customer'
 import { Login } from './components/login'
 import { Owner } from './components/owner'
+import { Menu_page } from './components/menu_page'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/customer_page" element={<Customer/>}/>
         <Route path="/login_page" element={<Login/>}/>
         <Route path="/owner" element={<Owner/>}/>
+        <Route path="/menu_page" element={<Menu_page/>}/>
 
       </Routes>
     </Router>

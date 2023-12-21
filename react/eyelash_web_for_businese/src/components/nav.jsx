@@ -1,19 +1,9 @@
+import {Link} from "react-router-dom"
 import '../App.css'
-import {Link} from 'react-router-dom'
 import {useState} from 'react'
 
 
-
-export const Menu = () =>{
-
-
-
-
-
-
-
-
-
+export const Nav = () =>{
 
   const [buttonClass, setButtonClass] = useState('');
 
@@ -31,10 +21,18 @@ export const Menu = () =>{
       setButtonClass('active');
   };
 
-  return(
-    <>
-    
-    
+
+
+
+
+
+
+
+
+return(
+<>
+
+<div>
             <div className='headeres'>
       <div className='logo'>
           <img src="https://static.vecteezy.com/system/resources/previews/022/892/565/original/eyelashes-logo-design-with-unique-style-for-woman-free-vector.jpg" alt="logo"/>
@@ -56,7 +54,7 @@ export const Menu = () =>{
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}>
    
-   <Link to ="/booknow" className="book-now-button"><div className="submit"><h3>Book </h3></div></Link>
+   <Link to ="/customer_page" className="book-now-button"><div className="submit"><h3>Book </h3></div></Link>
 			<div className="arrow">
 				<div className="top line"></div>
 				<div className="bottom line"></div>
@@ -75,23 +73,18 @@ export const Menu = () =>{
 
 
 
+   
+        </div>
 
-    <div>
-        <div className = 'menu'>
-          <h1 >EYELASH EXTENTION</h1>
-            <Link to ="/menu_page"><button className = 'menu_button'>menu<br/>
-            </button></Link>
-          
-        </div>
-        <div className="bottom_l">
-            <p>11135 1st Ave,<br/>
-              Whittier, CA 90603<br/> 
-              562-315-5517<br/> 
-              ohwaxingstudio@gmail.com<br/>
-        <br/></p>
-        </div>
-    </div></>
-  )
+
+
+
+
+</>
+
+
+
+)
 
 
 }

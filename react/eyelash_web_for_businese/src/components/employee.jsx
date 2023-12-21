@@ -14,6 +14,7 @@ export const Employee = () => {
     try {
       const success = await AddEmployee(name);
       if (success) {
+        
         console.log('add employee success');
       } else {
         console.log('add employee failed');
@@ -27,7 +28,7 @@ export const Employee = () => {
   };
 
   return (
-    
+    <div>
    
   <div className="form-container" >
 
@@ -37,10 +38,27 @@ export const Employee = () => {
         <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} value={name}/>
         <input className = 'input' type="submit" value="Add Employee"/>
     </form>
+
+
+
+
+ 
+
+
+
   </div>
   
+
+
+
+
+  <button><Link to="/home" className="nav-link">Home</Link></button>
+  </div>
+
   
-  
+
+
+
   )
   
   }

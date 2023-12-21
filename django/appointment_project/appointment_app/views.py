@@ -28,12 +28,13 @@ def employee(request):
 
 @api_view(["POST"])
 def customer(request):
-    name = request.data.get('name')
+    last_name = request.data.get('last_name')
+    first_name = request.data.get('first_name')
     email = request.data.get('email')
     phone = request.data.get('phone')
-    if not all([name, email, phone]):
+    if not all([first_name, last_name, email, phone]):
         return Response({'error': 'All fields are required'}, status=status.HTTP_400_BAD_REQUEST)
-    new_customer = Customer.objects.create(name=name, email=email, phone=phone)
+    new_customer = Customer.objects.create(first_name=first_name, last_name = last_name , email=email, phone=phone)
     return Response({'new_customer added': True}, status=status.HTTP_201_CREATED)
 
 
@@ -156,3 +157,21 @@ def logout_view(request):
         print(e)
         return JsonResponse({'signout':False})
     
+    
+    
+    
+    
+@api_view(["GET"])
+def all_menu(request):
+    services = Service.objects.all()
+    services_data = [{'id': service.id, 'service_name': service.service_name} for service in services]
+    return JsonResponse(services_data, safe=False)
+
+
+
+
+@api_view(["GET"])
+def All_Employee(request):
+    all_employee = Employee.objects.all()
+    all_employee_data = [{'name':employee.name} for employee in all_employee ]
+    return JsonResponse(all_employee_data,safe=False)

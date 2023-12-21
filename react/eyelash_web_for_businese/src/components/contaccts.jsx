@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import "../App.css"
 import {Link} from 'react-router-dom'
-import { Home } from './home'
+import { Nav} from './nav'
 export const Contact = () =>{
 
 
@@ -28,7 +28,7 @@ export const Contact = () =>{
 return(
   <>
    
-    <Home/>
+    <Nav/>
 
 
 
@@ -59,6 +59,10 @@ return(
     </div>
   </div>
 
+
+
+
+
   <div className="bottom_l">
         <p>11135 1st Ave,<br/>
         Whittier, CA 90603<br/> 
@@ -68,5 +72,13 @@ return(
     </div>
     
     </>
+
+
+
+
+
+
+
+
 )
 }

@@ -19,7 +19,8 @@ class Employee(models.Model):
 
 
 class Customer(models.Model):
-    name = models.CharField(max_length=200)
+    last_name =  models.CharField(max_length=200,blank = False, null = False, default="Default Value")
+    first_name = models.CharField(max_length=200,blank = False, null = False, default="Default Value")
     email = models.EmailField()
     phone = models.CharField(max_length=10)
     # You might also want to include address or other relevant details.
@@ -29,6 +30,13 @@ class Customer(models.Model):
 class Service(models.Model):
     service_name = models.CharField(max_length=200)
     # You can add more fields such as description, duration, price, etc.
+
+
+
+
+
+
+
 
 
 

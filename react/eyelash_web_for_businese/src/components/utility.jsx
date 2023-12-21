@@ -24,9 +24,9 @@ export const AddService = async (name) =>{
 
 
 
-export const AddCustomer = async (name,email,phone) =>{
+export const AddCustomer = async (first_name, last_name, email, phone) =>{
   getToken()
-  const response = await axios.post(`/customer/`, {name: name , email:email , phone: phone})
+  const response = await axios.post(`/customer/`, {first_name: first_name , last_name: last_name, email:email , phone: phone})
   console.log(response.data)
   return response.data
 }
@@ -34,6 +34,14 @@ export const AddCustomer = async (name,email,phone) =>{
 
 
 
+
+
+export const All_menu = async () =>{
+  getToken()
+  const response = await axios.get(`/all_the_menu/`)
+  console.log(response.data)
+  return response.data
+}
 
 
 
@@ -99,3 +107,17 @@ export const LogOut = async() => {
     return false; // In case of an error, return false
   }
 }
+
+
+
+
+
+export const fetchAllEmployees = async () => {
+  try {
+    const response = await axios.get('/all_the_employee/'); // Adjust the endpoint URL as needed
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching employees:', error);
+    return [];
+  }
+};

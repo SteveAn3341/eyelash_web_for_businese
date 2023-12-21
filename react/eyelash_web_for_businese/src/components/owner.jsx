@@ -22,6 +22,10 @@ export const Owner = () => {
       </ul>
 
       <button onClick={handleLogOut}>LOG OUT</button>
+
+
+
+       <button><Link to="/home" className="nav-link">Home</Link></button> 
     </>
   );
 };
