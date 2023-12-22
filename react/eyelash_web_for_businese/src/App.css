@@ -655,6 +655,10 @@ p {
 
 
 
+.customer-info{
+
+  padding-left: 70px;
+}
 
 
 
@@ -662,16 +666,18 @@ p {
 
 
 
+.appointment-summary{
+  padding-left: 50px;
+}
 
 
 
 
 
 
-
-
-
-
+.date{
+  padding-left: 200px;
+}
 
 
 
@@ -719,3 +725,8 @@ p {
   .card-registration .select-arrow {
   top: 13px;
   }
+
+
+
+
+

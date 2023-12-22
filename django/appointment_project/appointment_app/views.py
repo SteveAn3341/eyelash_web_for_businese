@@ -10,9 +10,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.serializers import serialize
 import json
 from django.http import JsonResponse, HttpResponse
-from .models import App_User
+from .models import App_User 
+
 from django.contrib.auth.hashers import make_password
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 
 
 
@@ -28,14 +30,32 @@ def employee(request):
 
 @api_view(["POST"])
 def customer(request):
-    last_name = request.data.get('last_name')
+    # Extract data from request.data
     first_name = request.data.get('first_name')
+    last_name = request.data.get('last_name')
     email = request.data.get('email')
     phone = request.data.get('phone')
-    if not all([first_name, last_name, email, phone]):
-        return Response({'error': 'All fields are required'}, status=status.HTTP_400_BAD_REQUEST)
-    new_customer = Customer.objects.create(first_name=first_name, last_name = last_name , email=email, phone=phone)
-    return Response({'new_customer added': True}, status=status.HTTP_201_CREATED)
+
+    # Create a new Customer instance and save it to the database
+    try:
+        new_customer = Customer.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone=phone
+        )
+        # After saving, new_customer will have the id attribute set to the newly created ID
+        return JsonResponse({'new_customer_added': True, 'id': new_customer.id})
+    except Exception as e:
+        # Handle any exceptions (like invalid data or database errors)
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
 
 
 
@@ -175,3 +195,103 @@ def All_Employee(request):
     all_employee = Employee.objects.all()
     all_employee_data = [{'name':employee.name} for employee in all_employee ]
     return JsonResponse(all_employee_data,safe=False)
+
+
+
+@api_view(["GET"])
+def get_customer(request, customer_id):
+    if request.method == 'GET':
+        try:
+            customer = Customer.objects.get(id=customer_id)
+            customer_data = {
+                'id': customer.id,
+                'first_name': customer.first_name,
+                'last_name': customer.last_name,
+                'email': customer.email,
+                'phone': customer.phone
+            }
+            return JsonResponse(customer_data)
+        except Customer.DoesNotExist:
+            return JsonResponse({'error': 'Customer not found'}, status=404)
+        
+        
+        
+@api_view(["GET"])
+def all_customer(request):
+    all_customers = Customer.objects.all()
+    all_customers_data = [
+        {   
+            'id': customer.id, 
+            'first_name': customer.first_name,
+            'last_name': customer.last_name,
+            'email': customer.email,
+            'phone': customer.phone
+        } for customer in all_customers
+    ]
+    return JsonResponse(all_customers_data, safe=False)
+
+
+
+
+
+@api_view(['POST'])
+def date(request):
+    service = request.data.get('service')
+    employee =request.data.get('employee')
+    date = request.data.get('date')
+    time = request.data.get('time')
+    customer_info=request.data.get('customer_info'),
+    try:
+        new_appointment = Appointment.objects.create(
+            date=date,
+            time=time,
+            service = service,
+            employee = employee,
+            customer_info = customer_info
+        )
+        return JsonResponse({'success': True, 'appointment_id': new_appointment.id})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})
+    
+    
+    
+    
+    
+    
+@api_view(['GET'])
+def list_appointments(request):
+    appointments = Appointment.objects.all()
+    appointments_data = []
+
+    for appointment in appointments:
+        appointment_dict = {
+            'id': appointment.id,
+            'service': appointment.service,
+            'date': appointment.date,
+            'time': appointment.time,
+            'employee': appointment.employee,
+            'customer_info': appointment.customer_info[0] if appointment.customer_info else {}
+        }
+        appointments_data.append(appointment_dict)
+
+    return Response(appointments_data)
+
+
+
+
+
+
+
+
+@api_view(['GET'])
+def get_appointment(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+    appointment_data = {
+        'id': appointment.id,
+        'service': appointment.service,
+        'date': appointment.date,
+        'time': appointment.time,
+        'employee': appointment.employee,
+        'customer_info': appointment.customer_info[0] if appointment.customer_info else {}
+    }
+    return JsonResponse(appointment_data)

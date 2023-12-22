@@ -11,7 +11,9 @@ import { Customer } from './components/customer'
 import { Login } from './components/login'
 import { Owner } from './components/owner'
 import { Menu_page } from './components/menu_page'
-
+import AppointmentForm from './components/date'
+import {Final} from './components/final'
+import ViewAppointments from './components/viewallappointments'
 
 function App() {
   return (
@@ -30,7 +32,12 @@ function App() {
         <Route path="/login_page" element={<Login/>}/>
         <Route path="/owner" element={<Owner/>}/>
         <Route path="/menu_page" element={<Menu_page/>}/>
+        <Route path="/date_page" element={<AppointmentForm/>}/>
+        <Route path="/final" element={<Final/>}/>
+        <Route path="/allappointments" element={<ViewAppointments/>}/>
 
+        
+       
       </Routes>
     </Router>
   </>

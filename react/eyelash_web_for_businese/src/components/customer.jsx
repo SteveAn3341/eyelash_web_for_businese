@@ -2,7 +2,7 @@ import '../App.css'
 import {useState} from "react"
 import 'react-router-dom'
 import {Link} from 'react-router-dom'
-import { AddCustomer } from './utility'
+import { AddCustomer, FetchCustomer } from './utility'
 import { useNavigate } from "react-router-dom";
 
 export const Customer = () => {
@@ -17,18 +17,26 @@ export const Customer = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const success = await AddCustomer(first_name, last_name, email, phone);
-      if (success) {
-        console.log('add customer success');
+      const customerData = await AddCustomer(first_name, last_name, email, phone);
+        
+        console.log('Customer Data:', customerData);
+        const customerId = customerData.id;
+     
         setEmail(" ")
         setFirstName(" ")
         setLastName(" ")
         setPhone(" ")
-        navigate('/booknow/');
-        
-      } else {
-        console.log('add customer failed');
-      }
+       
+
+
+        const  customerInfo = await FetchCustomer(customerId);
+        console.log('Fetched customer info:', customerInfo);
+
+
+        navigate('/booknow/', { state: { customerInfo: customerInfo } });
+
+
+      
     } catch (error) {
       console.error('Error during sign up:', error);
     }

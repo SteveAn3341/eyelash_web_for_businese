@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 import { Home } from './home'
 import {EmployeeBar} from "./employeebar"
 
-
-
+import AppointmentForm from './date'
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -28,6 +28,20 @@ const BookingPage = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  const location = useLocation();
+  const customerInfo = location.state?.customerInfo;
+  console.log(customerInfo)
   const initialServices={
     Eyelash_Extension_Refills: [
       {id:1, name: 'Classic Refill'},
@@ -196,16 +210,25 @@ const BookingPage = () => {
 
 
 
+  
+  
+  
+  
+  
+  
+  
 
 
-
-
-
-
-
-
-
-
+  <div className="booking-container">
+        {customerInfo && (
+          <div className="customer-info">
+            <h2>Customer Information</h2>
+            <p>Name: {customerInfo.first_name} {customerInfo.last_name}</p>
+            <p>Email: {customerInfo.email}</p>
+            <p>Phone: {customerInfo.phone}</p>
+          </div>
+        )}
+</div>
 
         <div className="appointment-summary">
   <h2>Your appointments</h2>
@@ -215,7 +238,10 @@ const BookingPage = () => {
       <p>Service: {service.name}</p>
       {selectedEmployee[service.id] && (
         <p>Selected Employee: {selectedEmployee[service.id].name}</p>
+        
       )}
+    <AppointmentForm  selectedService={service} 
+                        selectedEmployee={selectedEmployee[service.id]}       customerInfo={customerInfo} />
     </div>
   ))}
 </div>

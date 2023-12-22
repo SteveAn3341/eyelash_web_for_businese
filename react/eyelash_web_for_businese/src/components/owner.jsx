@@ -19,6 +19,7 @@ export const Owner = () => {
       <ul>
         <li><button><Link to='/employee_page' className="employee">Employee</Link></button></li>
         <li><button><Link to="/service_page" className="employee">Service</Link></button></li>
+        <li><button><Link to="/allappointments" >Appintements</Link></button></li>
       </ul>
 
       <button onClick={handleLogOut}>LOG OUT</button>
